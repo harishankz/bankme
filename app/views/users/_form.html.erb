@@ -1,0 +1,10 @@
+<%= bootstrap_form_tag(url: url, method: form_type) do |f| %>
+  <%= f.text_field :user_name, value: user.user_name %>
+  <%= f.text_field :date_of_birth, value: user.date_of_birth  %>
+  <%= f.text_field :gender, value: user.gender%>
+  <%= f.email_field :email, value: user.email %>
+  <%= f.password_field :password, value: user.password %>
+  <%= f.phone_field :phone_number, value: user.phone_number %>
+  <%= f.select :role, options_for_select(@roles.collect{|role| [role.role_name, role.id]}, selected: user.role_id) %>
+  <%= f.submit %>
+<% end %>

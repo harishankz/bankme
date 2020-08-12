@@ -1,0 +1,31 @@
+<% flash.each do |k,v| %>
+
+    <% next unless ["notice", "info", "warning", "alert"].include?(k) %>
+
+    <% bootstrap_class = "" %>
+    <% bootstrap_class = "alert-success" if k == "notice" %>
+    <% bootstrap_class = "alert-info" if k == "info" %>
+    <% bootstrap_class = "alert-warning" if k == "warning" %>
+    <% bootstrap_class = "alert-danger" if k == "alert" %>
+
+    <% unless v.blank? %>
+        <div class="alert <%= bootstrap_class %> alert-dismissible m-t-sm" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <%= raw(v.to_s) %>
+        </div>
+    <% end %>
+    
+    <% flash[k] = nil %>
+
+<% end %>
+
+<div class="custom-alert">
+    <div class="alert alert-dismissible hidden" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <span class="msg"></span>
+    </div>
+</div>
+
+<script type="text/javascript">
+    fadeOutAlerts();
+</script>

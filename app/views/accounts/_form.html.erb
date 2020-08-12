@@ -1,0 +1,10 @@
+<%= bootstrap_form_tag(url: url, method: form_type) do |f| %>
+  <%= f.text_field :customer_name, value: account.customer_name %>
+  <%= f.text_field :open_date, value: account.open_date || Date.today %>
+  <%= f.text_field :branch, value: account.branch%>
+  <%= f.text_field :minor_indicator, value: account.minor_indicator, read_only: true %>
+  <%= f.text_field :account_type, value: account.account_type %>
+  <%= f.select :customer, options_for_select(@users.collect{|role| [role.user_name, role.id]}, selected: account.customer_id) %>
+  <%= f.submit %>
+<% end %>
+

@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  database: local_bank
+
+development:
+  <<: *default
+  database: local_bank
+  username: root
+  password: admin123
+  host: localhost
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: local_bank_test
+  username: root
+  password: admin123
+  host: localhost
+
+production:
+  <<: *default

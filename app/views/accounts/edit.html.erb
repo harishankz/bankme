@@ -1,0 +1,6 @@
+<h1>Editing Account</h1>
+
+<%= render 'form', account: @account, url: "/accounts/#{@account.id}", form_type: :patch  %>
+
+<%= link_to 'Show', @account %> |
+<%= link_to 'Back', accounts_path %>

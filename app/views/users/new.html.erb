@@ -1,0 +1,9 @@
+<h1>New User</h1>
+<div class="row">
+  <div class="col-xs-6">
+    <%= render 'form', user: @user, url: "/users", form_type: :post  %>
+  </div>
+</div>
+
+<br/>
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,14 @@
+default: &default
+  customer_api_endpoint: "http://localhost:4000/api/v1/"
+  account_api_endpoint: "http://localhost:3000/api/v1/"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  customer_api_endpoint: ""
+
+production:
+  <<: *default
+  customer_api_endpoint: "b09ca30d-d179-4d77-fd31-0fbe9cd19e4f"
