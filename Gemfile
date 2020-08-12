@@ -55,7 +55,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'cancancan', '~> 3.1'
-gem "local_bank_gh", path: '/home/ghari/Documents/assignment/local_bank_gh'
+use_local_gem = false
+
+if use_local_gem
+  gem "local_bank_gh", path: '/home/ghari/Documents/assignment/local_bank_gh'
+else
+  gem "local_bank_gh" , git: 'https://github.com/harishankz/local_bank_gh.git', branch: "master"
+end
+
 gem "httpclient"
 
 group :development, :test do

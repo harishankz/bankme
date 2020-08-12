@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
+  skip_before_action :verify_signed_out_user, only: [:destroy]
 
   # GET /resource/sign_in
   # def new
@@ -10,11 +11,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    configure_sign_in_params
     response = RubyBank.sign_in( { email: params[:user][:email], password: params[:user][:password] })
-
     if response[:code] == 200
-
       session[:user_id] = response[:body][:user][:user_id]
       session[:token] = response[:body][:user][:token]
       redirect_to root_path
@@ -32,7 +30,6 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
-    # sign_out(current_user)
     reset_session
     redirect_to new_user_session_path
   end
