@@ -12,4 +12,4 @@ test:
 production:
   <<: *default
   customer_api_endpoint: "https://ruby-bank-customer-api.herokuapp.com/api/v1/"
-  account_api_endpoint :  "https://ruby-bank-account-api.herokuapp.com/"
+  account_api_endpoint :  "https://ruby-bank-account-api.herokuapp.com/api/v1/"

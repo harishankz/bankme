@@ -3,6 +3,8 @@ default: &default
   pool: 5
   timeout: 5000
   database: local_bank
+  port: 3306
+  reconnect: true
 
 development:
   <<: *default
@@ -23,3 +25,7 @@ test:
 
 production:
   <<: *default
+  database: local_bank
+  username: admin
+  password: admin123
+  host: database-100.cflowjmols4d.us-east-2.rds.amazonaws.com
